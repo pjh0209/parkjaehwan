@@ -1,0 +1,82 @@
+.page {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 100px 0;
+  background-color: #fff;
+  color: #1a1a1a;
+  font-family: 'Noto Sans KR', sans-serif;
+  h1 {
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+  h2 {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+  h3 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+  p {
+    font-size: 16px;
+    font-weight: 400;
+    margin-bottom: 8px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  > div {
+    width: 100vw;
+    padding: 48px 20% 48px;
+  }
+  .page_content_about {
+    background-color: #1a1a1a;
+    color: #fff;
+    .about_me_reason {
+      padding: 12px 0;
+    }
+  }
+  .page_header {
+    background-color: #fff;
+    color: #1a1a1a;
+  }
+  .page_content_skills {
+    background-color: #fff;
+    color: #1a1a1a;
+  }
+  .skills_list {
+    gap: 12px;
+    .skills_list_item {
+      margin-bottom: 24px;
+      .skills_list_item_image {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 12px;
+        .skills_list_item_image_container {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 12px;
+        }
+      }
+    }
+  }
+  .page_content_experience {
+    background-color: #1a1a1a;
+    color: #fff;
+  }
+  .page_content_contact{
+    background-color: #1a1a1a;
+    color: #fff;
+    .contact_list_item {
+      margin: 0 0 12px;
+    }
+  }
+}
