@@ -1,44 +1,79 @@
+"use client";
 import Image from "next/image";
 import styles from "./page.module.scss";
 import { experience } from "./_arrays/experience";
 import { projects } from "./_arrays/projects";
+import Link from "next/link";
+import imageLoader from "./util/imageLoader";
+import { useEffect, useState } from "react";
+
+const basePath = "/parkjaehwan";
 
 export default function Home() {
+  const [isFixed, setIsFixed] = useState(false);
+  const [currentMenu, setCurrentMenu] = useState(0);
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const handleScroll = () => {
+    setScrollPosition(window.scrollY);
+    setIsFixed(window.scrollY > 366);
+    if(window.scrollY > 278 && window.scrollY < 916) {
+      setCurrentMenu(1);
+    } else if(window.scrollY > 916 && window.scrollY < 2200) {
+      setCurrentMenu(2);
+    } else if(window.scrollY > 2200 && window.scrollY < 3188) {
+      setCurrentMenu(3);
+    } else if(window.scrollY > 3188 && window.scrollY < 5964) {
+      setCurrentMenu(4);
+    } else if(window.scrollY > 5964) {
+      setCurrentMenu(5);
+    } else {
+      setCurrentMenu(0);
+    }
+  };
+  useEffect(() => {
+
+  }, [currentMenu]);
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
   const skills = [
     {
       type: "Front-End",
       list: [
         {
           name: "React",
-          image: "https://pjh0209.github.io/parkjaehwan/image/skills/frontend/react.png",
+          image: `${basePath}/image/skills/frontend/react.png`,
         },
         {
           name: "Next.js",
-          image: "https://pjh0209.github.io/parkjaehwan/image/skills/frontend/nextjs.png",
+          image: `${basePath}/image/skills/frontend/nextjs.png`,
         },
         {
           name: "TypeScript",
-          image: "https://pjh0209.github.io/parkjaehwan/image/skills/frontend/typescript.png",
+          image: `${basePath}/image/skills/frontend/typescript.png`,
         },
         {
           name: "JavaScript",
-          image: "https://pjh0209.github.io/parkjaehwan/image/skills/frontend/javascript.png",
+          image: `${basePath}/image/skills/frontend/javascript.png`,
         },
         {
           name: "HTML5",
-          image: "https://pjh0209.github.io/parkjaehwan/image/skills/frontend/html.png",
+          image: `${basePath}/image/skills/frontend/html.png`,
         },
         {
           name: "CSS3",
-          image: "https://pjh0209.github.io/parkjaehwan/image/skills/frontend/css.png",
+          image: `${basePath}/image/skills/frontend/css.png`,
         },
         {
           name: "React-native",
-          image: "https://pjh0209.github.io/parkjaehwan/image/skills/frontend/react-native.png",
+          image: `${basePath}/image/skills/frontend/react-native.png`,
         },
         {
           name: "Flutter",
-          image: "https://pjh0209.github.io/parkjaehwan/image/skills/frontend/flutter.png",
+          image: `${basePath}/image/skills/frontend/flutter.png`,
         }
       ]
     },
@@ -47,23 +82,23 @@ export default function Home() {
       list: [
         {
           name: "Redux",
-          image: "https://pjh0209.github.io/parkjaehwan/image/skills/state/redux.png",
+          image: `${basePath}/image/skills/state/redux.png`,
         },
         {
           name: "redux-saga",
-          image: "https://pjh0209.github.io/parkjaehwan/image/skills/state/redux-saga.png",
+          image: `${basePath}/image/skills/state/redux-saga.png`,
         },
         {
           name: "Recoil",
-          image: "https://pjh0209.github.io/parkjaehwan/image/skills/state/recoil.png",
+          image: `${basePath}/image/skills/state/recoil.png`,
         },
         {
           name: "Zustand",
-          image: "https://pjh0209.github.io/parkjaehwan/image/skills/state/Zustand.jpg",
+          image: `${basePath}/image/skills/state/Zustand.jpg`,
         },
         {
           name: "React-query",
-          image: "https://pjh0209.github.io/parkjaehwan/image/skills/state/react-query.png",
+          image: `${basePath}/image/skills/state/react-query.png`,
         },
       ]
     },
@@ -73,19 +108,19 @@ export default function Home() {
         //Axios, WebView, Firebase, Bootpay, Serverless, Dynamic Link 
         {
           name: "Axios",
-          image: "https://pjh0209.github.io/parkjaehwan/image/skills/libraries/axios.png",
+          image: "/parkjaehwan/image/skills/libraries/axios.png",
         },
         {
           name: "WebView",
-          image: "https://pjh0209.github.io/parkjaehwan/image/skills/libraries/webview.png",
+          image: "/parkjaehwan/image/skills/libraries/webview.png",
         },
         {
           name: "Firebase",
-          image: "https://pjh0209.github.io/parkjaehwan/image/skills/libraries/firebase.png",
+          image: "/parkjaehwan/image/skills/libraries/firebase.png",
         },
         {
           name: "Dynamic Link",
-          image: "https://pjh0209.github.io/parkjaehwan/image/skills/libraries/dynamic_link.png",
+          image: "/parkjaehwan/image/skills/libraries/dynamic_link.png",
         },
       ]
     },
@@ -94,31 +129,31 @@ export default function Home() {
       list: [
         {
           name: "Git",
-          image: "https://pjh0209.github.io/parkjaehwan/image/skills/cooperation/git.png",
+          image: "/parkjaehwan/image/skills/cooperation/git.png",
         },
         {
           name: "Github",
-          image: "https://pjh0209.github.io/parkjaehwan/image/skills/cooperation/github.png",
+          image: "/parkjaehwan/image/skills/cooperation/github.png",
         },
         {
           name: "Notion",
-          image: "https://pjh0209.github.io/parkjaehwan/image/skills/cooperation/notion.png",
+          image: "/parkjaehwan/image/skills/cooperation/notion.png",
         },
         {
           name: "Slack",
-          image: "https://pjh0209.github.io/parkjaehwan/image/skills/cooperation/slack.png",
+          image: "/parkjaehwan/image/skills/cooperation/slack.png",
         },
         {
           name: "Figma",
-          image: "https://pjh0209.github.io/parkjaehwan/image/skills/cooperation/figma.png",
+          image: "/parkjaehwan/image/skills/cooperation/figma.png",
         },
         {
           name: "SVN",
-          image: "https://pjh0209.github.io/parkjaehwan/image/skills/cooperation/svn.png",
+          image: "/parkjaehwan/image/skills/cooperation/svn.png",
         },
         {
           name: "Adobe XD",
-          image: "https://pjh0209.github.io/parkjaehwan/image/skills/cooperation/adobexd.png",
+          image: "/parkjaehwan/image/skills/cooperation/adobexd.png",
         },
         
       ]
@@ -126,14 +161,40 @@ export default function Home() {
   ]
   return (
     <div className={styles.page}>
+      <div className={`${styles.page_menu_container} ${styles.fixed}`}>
+        <div className={`${styles.page_menu_item} ${currentMenu == 1 ? styles.active : ""}`}>
+          <Link href="#about-me">
+            <p>About Me</p>
+          </Link>
+        </div>
+        <div className={`${styles.page_menu_item} ${currentMenu == 2 ? styles.active : ""}`}>
+          <Link href="#skills">
+            <p>Skills</p>
+          </Link>
+        </div>
+        <div className={`${styles.page_menu_item} ${currentMenu == 3 ? styles.active : ""}`}>
+          <Link href="#experience">
+            <p>Experience</p>
+          </Link>
+        </div>
+        <div className={`${styles.page_menu_item} ${currentMenu == 4 ? styles.active : ""}`}>
+          <Link href="#projects">
+            <p>Projects</p>
+          </Link>
+        </div>
+        <div className={`${styles.page_menu_item} ${currentMenu == 5 ? styles.active : ""}`}>
+          <Link href="#contact">
+            <p>Contact</p>
+          </Link>
+        </div>
+      </div>
       <div className={styles.page_header}>
         <h1>박재환</h1>
         <h2>Front-End Developer</h2>
         <h4>1997. 02. 09</h4>
       </div>
-      
       {/* about me */}
-      <div className={`${styles.page_content} ${styles.page_content_about}`}>
+      <div className={`${styles.page_content} ${styles.page_content_about}`} id="about-me">
         <h2>About Me</h2>
         <div>
           <p>안녕하세요. <strong>비효율을 개선하고 더 나은 경험을 만드는 것을 즐기는 프론트엔드 개발자</strong> 박재환입니다.</p>
@@ -157,7 +218,7 @@ export default function Home() {
       </div>
       
       {/* skills */}
-      <div className={`${styles.page_content} ${styles.page_content_skills}`}>
+      <div className={`${styles.page_content} ${styles.page_content_skills}`} id="skills">
         <h2>Skills</h2>
         <div className={styles.skills_list}>
           {
@@ -168,7 +229,7 @@ export default function Home() {
                 {
                   skill.list.map((item, index2) => (
                       <div className={styles.skills_list_item_image_container} key={`skill_list_${index2}`}>
-                        <Image key={`skill_list_img_${index2}`}  src={item.image} alt={item.name} width={skill.type == "Cooperation" || (skill.type == "Libraries" && item.name != "Dynamic Link") || item.name == "redux-saga" ? 170 : item.name == "Zustand" ? 170 : item.name == "React-query" ? 170 : 100} height={100} objectFit="cover" />
+                        <Image key={`skill_list_img_${index2}`} loader={imageLoader} src={item.image} alt={item.name} width={skill.type == "Cooperation" || (skill.type == "Libraries" && item.name != "Dynamic Link") || item.name == "redux-saga" ? 170 : item.name == "Zustand" ? 170 : item.name == "React-query" ? 170 : 100} height={100} objectFit="cover" />
                         <p key={`skill_list_img_text_${index2}`}>{item.name}</p>
                       </div>
                   ))
@@ -181,7 +242,7 @@ export default function Home() {
       </div>
 
       {/* Experience */}
-      <div className={`${styles.page_content} ${styles.page_content_experience}`}>
+      <div className={`${styles.page_content} ${styles.page_content_experience} `} id="experience">
         <h2>Experience</h2>
         <div className={styles.experience_list}>
           <div className={styles.experience_list_container}>
@@ -207,7 +268,7 @@ export default function Home() {
       </div>
 
       {/* Projects */}
-      <div className={`${styles.page_content} ${styles.page_content_projects}`}>
+      <div className={`${styles.page_content} ${styles.page_content_projects}`} id="projects">
         <h2>Projects</h2>
         <div className={styles.projects_list}>
           {
@@ -225,7 +286,7 @@ export default function Home() {
       </div>
 
       {/* Contact */}
-      <div className={`${styles.page_content} ${styles.page_content_contact}`}>
+      <div className={`${styles.page_content} ${styles.page_content_contact}`} id="contact">
         <h2>Contact</h2>
         <div className={styles.contact_list}>
           <div className={styles.contact_list_item}>
