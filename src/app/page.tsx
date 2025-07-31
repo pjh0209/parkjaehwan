@@ -1,51 +1,44 @@
 import Image from "next/image";
 import styles from "./page.module.scss";
+import { experience } from "./_arrays/experience";
+import { projects } from "./_arrays/projects";
 
 export default function Home() {
-  const aboutme = `
-안녕하세요. 비효율을 개선하고 더 나은 경험을 만드는 것을 즐기는 개발자 박재환입니다.
-스타트업에서의 실무 경험을 바탕으로, 서비스 확장성과 유지보수성을 고려한 구조적인 코드 작성에 집중하고 있습니다. 
-직관적인 로직 설계와 명확한 흐름을 통해, 누구나 쉽게 이해하고 함께 협업할 수 있는 코드를 지향합니다.
-문제가 발생했을 때는 현상을 넘어서 근본적인 원인을 파악하고, 재발 방지를 위한 개선책을 마련하는 데 주력합니다. 
-이는 단순한 오류 수정이 아닌, 서비스 안정성과 팀 생산성 향상으로 이어진다고 믿습니다.
-또한, 언제나 사용자의 관점에서 서비스를 바라보며, 실제 사용 중 겪을 수 있는 불편함을 미리 고민하고 개선합니다. 
-UX는 단순한 디자인 요소가 아니라 기획의도를 효과적으로 전달하는 핵심 수단이라고 생각하며, 더 나은 사용자 경험을 위해 어떤 흐름과 상호작용이 필요한지 끊임없이 고민하고 구현합니다.
-`;
   const skills = [
     {
       type: "Front-End",
       list: [
         {
           name: "React",
-          image: "/image/skills/frontend/react.png",
+          image: "https://pjh0209.github.io/parkjaehwan/image/skills/frontend/react.png",
         },
         {
           name: "Next.js",
-          image: "/image/skills/frontend/nextjs.png",
+          image: "https://pjh0209.github.io/parkjaehwan/image/skills/frontend/nextjs.png",
         },
         {
           name: "TypeScript",
-          image: "/image/skills/frontend/typescript.png",
+          image: "https://pjh0209.github.io/parkjaehwan/image/skills/frontend/typescript.png",
         },
         {
           name: "JavaScript",
-          image: "/image/skills/frontend/javascript.png",
+          image: "https://pjh0209.github.io/parkjaehwan/image/skills/frontend/javascript.png",
         },
         {
           name: "HTML5",
-          image: "/image/skills/frontend/html.png",
+          image: "https://pjh0209.github.io/parkjaehwan/image/skills/frontend/html.png",
         },
         {
           name: "CSS3",
-          image: "/image/skills/frontend/css.png",
+          image: "https://pjh0209.github.io/parkjaehwan/image/skills/frontend/css.png",
         },
         {
           name: "React-native",
-          image: "/image/skills/frontend/react-native.png",
+          image: "https://pjh0209.github.io/parkjaehwan/image/skills/frontend/react-native.png",
         },
         {
           name: "Flutter",
-          image: "/image/skills/frontend/flutter.png",
+          image: "https://pjh0209.github.io/parkjaehwan/image/skills/frontend/flutter.png",
         }
       ]
     },
@@ -54,23 +47,23 @@ UX는 단순한 디자인 요소가 아니라 기획의도를 효과적으로 �
       list: [
         {
           name: "Redux",
-          image: "/image/skills/state/redux.png",
+          image: "https://pjh0209.github.io/parkjaehwan/image/skills/state/redux.png",
         },
         {
           name: "redux-saga",
-          image: "/image/skills/state/redux-saga.png",
+          image: "https://pjh0209.github.io/parkjaehwan/image/skills/state/redux-saga.png",
         },
         {
           name: "Recoil",
-          image: "/image/skills/state/recoil.png",
+          image: "https://pjh0209.github.io/parkjaehwan/image/skills/state/recoil.png",
         },
         {
           name: "Zustand",
-          image: "/image/skills/state/Zustand.jpg",
+          image: "https://pjh0209.github.io/parkjaehwan/image/skills/state/Zustand.jpg",
         },
         {
           name: "React-query",
-          image: "/image/skills/state/react-query.png",
+          image: "https://pjh0209.github.io/parkjaehwan/image/skills/state/react-query.png",
         },
       ]
     },
@@ -80,19 +73,19 @@ UX는 단순한 디자인 요소가 아니라 기획의도를 효과적으로 �
         //Axios, WebView, Firebase, Bootpay, Serverless, Dynamic Link 
         {
           name: "Axios",
-          image: "/image/skills/libraries/axios.png",
+          image: "https://pjh0209.github.io/parkjaehwan/image/skills/libraries/axios.png",
         },
         {
           name: "WebView",
-          image: "/image/skills/libraries/webview.png",
+          image: "https://pjh0209.github.io/parkjaehwan/image/skills/libraries/webview.png",
         },
         {
           name: "Firebase",
-          image: "/image/skills/libraries/firebase.png",
+          image: "https://pjh0209.github.io/parkjaehwan/image/skills/libraries/firebase.png",
         },
         {
           name: "Dynamic Link",
-          image: "/image/skills/libraries/dynamic-link.png",
+          image: "https://pjh0209.github.io/parkjaehwan/image/skills/libraries/dynamic_link.png",
         },
       ]
     },
@@ -101,31 +94,31 @@ UX는 단순한 디자인 요소가 아니라 기획의도를 효과적으로 �
       list: [
         {
           name: "Git",
-          image: "/image/skills/cooperation/git.png",
+          image: "https://pjh0209.github.io/parkjaehwan/image/skills/cooperation/git.png",
         },
         {
           name: "Github",
-          image: "/image/skills/cooperation/github.png",
+          image: "https://pjh0209.github.io/parkjaehwan/image/skills/cooperation/github.png",
         },
         {
           name: "Notion",
-          image: "/image/skills/cooperation/notion.png",
+          image: "https://pjh0209.github.io/parkjaehwan/image/skills/cooperation/notion.png",
         },
         {
           name: "Slack",
-          image: "/image/skills/cooperation/slack.png",
+          image: "https://pjh0209.github.io/parkjaehwan/image/skills/cooperation/slack.png",
         },
         {
           name: "Figma",
-          image: "/image/skills/cooperation/figma.png",
+          image: "https://pjh0209.github.io/parkjaehwan/image/skills/cooperation/figma.png",
         },
         {
           name: "SVN",
-          image: "/image/skills/cooperation/svn.png",
+          image: "https://pjh0209.github.io/parkjaehwan/image/skills/cooperation/svn.png",
         },
         {
           name: "Adobe XD",
-          image: "/image/skills/cooperation/adobexd.png",
+          image: "https://pjh0209.github.io/parkjaehwan/image/skills/cooperation/adobexd.png",
         },
         
       ]
@@ -136,6 +129,7 @@ UX는 단순한 디자인 요소가 아니라 기획의도를 효과적으로 �
       <div className={styles.page_header}>
         <h1>박재환</h1>
         <h2>Front-End Developer</h2>
+        <h4>1997. 02. 09</h4>
       </div>
       
       {/* about me */}
@@ -172,10 +166,10 @@ UX는 단순한 디자인 요소가 아니라 기획의도를 효과적으로 �
                 <h3>{skill.type}</h3>
                 <div className={styles.skills_list_item_image} key={index}>
                 {
-                  skill.list.map((item, index) => (
-                      <div className={styles.skills_list_item_image_container}>
-                        <Image src={item.image} alt={item.name} width={skill.type == "Cooperation" || item.name == "redux-saga" ? 170 : item.name == "Zustand" ? 170 : item.name == "React-query" ? 170 : 100} height={100} objectFit="cover" />
-                        <p>{item.name}</p>
+                  skill.list.map((item, index2) => (
+                      <div className={styles.skills_list_item_image_container} key={`skill_list_${index2}`}>
+                        <Image key={`skill_list_img_${index2}`}  src={item.image} alt={item.name} width={skill.type == "Cooperation" || (skill.type == "Libraries" && item.name != "Dynamic Link") || item.name == "redux-saga" ? 170 : item.name == "Zustand" ? 170 : item.name == "React-query" ? 170 : 100} height={100} objectFit="cover" />
+                        <p key={`skill_list_img_text_${index2}`}>{item.name}</p>
                       </div>
                   ))
                 }
@@ -190,8 +184,24 @@ UX는 단순한 디자인 요소가 아니라 기획의도를 효과적으로 �
       <div className={`${styles.page_content} ${styles.page_content_experience}`}>
         <h2>Experience</h2>
         <div className={styles.experience_list}>
-          <div className={styles.experience_list_item}>
-            <h3>Experience</h3>
+          <div className={styles.experience_list_container}>
+            {
+              experience.map((experience, index) => (
+                <div className={styles.experience_list_card} key={`experience_list_${index}`}>
+                  <div className={styles.experience_list_card_header}>
+                    <h3>{experience.company}</h3>
+                    <p><strong>{experience.position}</strong> {experience.period}</p>
+                  </div>
+                  <div className={styles.experience_list_card_content}>
+                    {
+                      experience.experienceProject.map((project, index2) => (
+                        <p key={`experience_list_card_content_${index2}`}> - {project.projectName}</p>
+                      ))
+                    }
+                  </div>
+                </div>
+              ))
+            }
           </div>
         </div>
       </div>
@@ -200,9 +210,17 @@ UX는 단순한 디자인 요소가 아니라 기획의도를 효과적으로 �
       <div className={`${styles.page_content} ${styles.page_content_projects}`}>
         <h2>Projects</h2>
         <div className={styles.projects_list}>
-          <div className={styles.projects_list_item}>
-            <h3>Projects</h3>
-          </div>
+          {
+            projects.map((project, index) => (
+              <div className={styles.projects_list_item} key={`projects_list_${index}`}>
+                <h3>{project.projectName}</h3>
+                <p>{project.period}</p>
+                {project.descriptions.map((description, index) => (
+                  <p key={index}>{description}</p>
+                ))}
+              </div>
+            ))
+          }
         </div>
       </div>
 

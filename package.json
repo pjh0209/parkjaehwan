@@ -2,13 +2,18 @@
   "name": "parkjaehwan",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://pjh0209.github.io/parkjaehwan",
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build",
+    "next-build": "next build",
     "start": "next start",
+    "build": "next build",
+    "predeploy": "npm run build",
+    "deploy": "npm run build && shx touch out/.nojekyll && git add -f out/ && git commit -m \"Deploy\" && git subtree push --prefix out origin gh-pages",
     "lint": "next lint"
   },
   "dependencies": {
+    "gh-pages": "^6.3.0",
     "next": "15.3.5",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
@@ -21,6 +26,8 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "15.3.5",
+    "git": "^0.1.5",
+    "shx": "^0.4.0",
     "typescript": "^5"
   }
 }

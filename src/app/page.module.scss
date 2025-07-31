@@ -71,6 +71,46 @@
   .page_content_experience {
     background-color: #1a1a1a;
     color: #fff;
+    width: 100%;
+    .experience_list_container {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      gap: 24px;
+      .experience_list_card_header {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 8px;
+      }
+      .experience_list_card_content {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 8px;
+        p {
+          margin-bottom: 4px;
+        }
+      }
+    }
+  }
+  .page_content_projects {
+    .projects_list {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      gap: 24px;
+      .projects_list_item {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 8px;
+        p {
+          margin-bottom: 4px;
+        }
+      }
+    }
   }
   .page_content_contact{
     background-color: #1a1a1a;
