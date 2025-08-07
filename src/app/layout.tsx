@@ -15,6 +15,14 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "박재환 | Front-End Developer",
   description: "박재환 Front-End Developer",
+  keywords: "박재환, Front-End Developer, 박재환 포트폴리오, 박재환 이력서",
+  authors: [{ name: "박재환" }],
+  robots: "index, follow",
+};
+
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1.0,
 };
 
 export default function RootLayout({
@@ -23,14 +31,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <head>
-        <meta name="keywords" content="박재환, Front-End Developer, 박재환 포트폴리오, 박재환 이력서" />
-        <meta name="author" content="박재환" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="robots" content="index, follow" />
-        <meta name="googlebot" content="index, follow" />
-      </head>
+    <html lang="ko">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         {children}
       </body>

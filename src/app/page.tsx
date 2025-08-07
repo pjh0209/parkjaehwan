@@ -7,29 +7,42 @@ import Link from "next/link";
 import imageLoader from "./util/imageLoader";
 import { useEffect, useState } from "react";
 
-const basePath = "/parkjaehwan";
+const basePath = process.env.NODE_ENV === 'production' ? "/parkjaehwan" : "";
 
 export default function Home() {
-  const [isFixed, setIsFixed] = useState(false);
   const [currentMenu, setCurrentMenu] = useState(0);
-  const [scrollPosition, setScrollPosition] = useState(0);
+  const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const handleScroll = () => {
-    setScrollPosition(window.scrollY);
-    setIsFixed(window.scrollY > 366);
-    if(window.scrollY > 278 && window.scrollY < 916) {
+    const scrollY = window.scrollY;
+    if(scrollY > 278 && scrollY < 916) {
       setCurrentMenu(1);
-    } else if(window.scrollY > 916 && window.scrollY < 2200) {
+    } else if(scrollY > 916 && scrollY < 2200) {
       setCurrentMenu(2);
-    } else if(window.scrollY > 2200 && window.scrollY < 3188) {
+    } else if(scrollY > 2200 && scrollY < 3188) {
       setCurrentMenu(3);
-    } else if(window.scrollY > 3188 && window.scrollY < 5964) {
+    } else if(scrollY > 3188 && scrollY < 5964) {
       setCurrentMenu(4);
-    } else if(window.scrollY > 5964) {
+    } else if(scrollY > 5964) {
       setCurrentMenu(5);
     } else {
       setCurrentMenu(0);
     }
   };
+
+  const openModal = (project: typeof projects[0]) => {
+    setSelectedProject(project);
+    setIsModalOpen(true);
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedProject(null);
+    document.body.style.overflow = 'unset';
+  };
+
   useEffect(() => {
 
   }, [currentMenu]);
@@ -108,19 +121,19 @@ export default function Home() {
         //Axios, WebView, Firebase, Bootpay, Serverless, Dynamic Link 
         {
           name: "Axios",
-          image: "/parkjaehwan/image/skills/libraries/axios.png",
+          image: `${basePath}/image/skills/libraries/axios.png`,
         },
         {
           name: "WebView",
-          image: "/parkjaehwan/image/skills/libraries/webview.png",
+          image: `${basePath}/image/skills/libraries/webview.png`,
         },
         {
           name: "Firebase",
-          image: "/parkjaehwan/image/skills/libraries/firebase.png",
+          image: `${basePath}/image/skills/libraries/firebase.png`,
         },
         {
           name: "Dynamic Link",
-          image: "/parkjaehwan/image/skills/libraries/dynamic_link.png",
+          image: `${basePath}/image/skills/libraries/dynamic_link.png`,
         },
       ]
     },
@@ -129,31 +142,31 @@ export default function Home() {
       list: [
         {
           name: "Git",
-          image: "/parkjaehwan/image/skills/cooperation/git.png",
+          image: `${basePath}/image/skills/cooperation/git.png`,
         },
         {
           name: "Github",
-          image: "/parkjaehwan/image/skills/cooperation/github.png",
+          image: `${basePath}/image/skills/cooperation/github.png`,
         },
         {
           name: "Notion",
-          image: "/parkjaehwan/image/skills/cooperation/notion.png",
+          image: `${basePath}/image/skills/cooperation/notion.png`,
         },
         {
           name: "Slack",
-          image: "/parkjaehwan/image/skills/cooperation/slack.png",
+          image: `${basePath}/image/skills/cooperation/slack.png`,
         },
         {
           name: "Figma",
-          image: "/parkjaehwan/image/skills/cooperation/figma.png",
+          image: `${basePath}/image/skills/cooperation/figma.png`,
         },
         {
           name: "SVN",
-          image: "/parkjaehwan/image/skills/cooperation/svn.png",
+          image: `${basePath}/image/skills/cooperation/svn.png`,
         },
         {
           name: "Adobe XD",
-          image: "/parkjaehwan/image/skills/cooperation/adobexd.png",
+          image: `${basePath}/image/skills/cooperation/adobexd.png`,
         },
         
       ]
@@ -229,7 +242,7 @@ export default function Home() {
                 {
                   skill.list.map((item, index2) => (
                       <div className={styles.skills_list_item_image_container} key={`skill_list_${index2}`}>
-                        <Image key={`skill_list_img_${index2}`} loader={imageLoader} src={item.image} alt={item.name} width={skill.type == "Cooperation" || (skill.type == "Libraries" && item.name != "Dynamic Link") || item.name == "redux-saga" ? 170 : item.name == "Zustand" ? 170 : item.name == "React-query" ? 170 : 100} height={100} objectFit="cover" />
+                        <Image key={`skill_list_img_${index2}`} {...(process.env.NODE_ENV === 'production' && { loader: imageLoader })} src={item.image} alt={item.name} width={skill.type == "Cooperation" || (skill.type == "Libraries" && item.name != "Dynamic Link") || item.name == "redux-saga" ? 170 : item.name == "Zustand" ? 170 : item.name == "React-query" ? 170 : 100} height={100} style={{ objectFit: 'cover' }} priority={index2 < 3} />
                         <p key={`skill_list_img_text_${index2}`}>{item.name}</p>
                       </div>
                   ))
@@ -270,20 +283,50 @@ export default function Home() {
       {/* Projects */}
       <div className={`${styles.page_content} ${styles.page_content_projects}`} id="projects">
         <h2>Projects</h2>
-        <div className={styles.projects_list}>
+        <div className={styles.projects_grid}>
           {
             projects.map((project, index) => (
-              <div className={styles.projects_list_item} key={`projects_list_${index}`}>
-                <h3>{project.projectName}</h3>
-                <p>{project.period}</p>
-                {project.descriptions.map((description, index) => (
-                  <p key={index}>{description}</p>
-                ))}
+              <div 
+                className={styles.projects_card} 
+                key={`projects_card_${index}`}
+                onClick={() => openModal(project)}
+              >
+                <div className={styles.projects_card_content}>
+                  <h3>{project.projectName}</h3>
+                  <p className={styles.projects_card_company}>{project.company}</p>
+                  <p className={styles.projects_card_period}>{project.period}</p>
+                </div>
               </div>
             ))
           }
         </div>
       </div>
+
+      {/* Project Modal */}
+      {isModalOpen && selectedProject && (
+        <div className={styles.modal_overlay} onClick={closeModal}>
+          <div className={styles.modal_content} onClick={(e) => e.stopPropagation()}>
+            <button className={styles.modal_close} onClick={closeModal}>
+              ×
+            </button>
+            <div className={styles.modal_header}>
+              <div className={styles.modal_info}>
+                <h2>{selectedProject.projectName}</h2>
+                <p className={styles.modal_company}>{selectedProject.company}</p>
+                <p className={styles.modal_period}>{selectedProject.period}</p>
+              </div>
+            </div>
+            <div className={styles.modal_body}>
+              <h3>프로젝트 설명</h3>
+              <div className={styles.modal_descriptions}>
+                {selectedProject.descriptions.map((description, index) => (
+                  <p key={index}>{description}</p>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Contact */}
       <div className={`${styles.page_content} ${styles.page_content_contact}`} id="contact">

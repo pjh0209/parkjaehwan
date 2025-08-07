@@ -5,6 +5,7 @@
   "homepage": "https://pjh0209.github.io/parkjaehwan",
   "scripts": {
     "dev": "next dev --turbopack",
+    "dev:network": "node scripts/dev.js",
     "next-build": "next build",
     "start": "next start",
     "build": "next build",
